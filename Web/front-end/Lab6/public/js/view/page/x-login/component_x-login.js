@@ -1,32 +1,16 @@
-import template from './template.js'
-import '../../composition/x-login_window/component.js'
+import React from 'react';
+import Template from './template.js';
+import XLoginWindow from '../../composition/x-login_window/component.js';
 
-class XLogin extends HTMLElement {
-    constructor() { 
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
-
-    connectedCallback() {  
-        this._render();
-    }
-
-    disconnectedCallback() {
-
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    attributeChangedCallback(attr, prev, next) {
-
-    }
-
-    _render() {    
-        if (!this.ownerDocument.defaultView) return;    
-        this.shadowRoot.innerHTML = template(this);      
-    }
+class XLogin extends React.Component {
+render() {
+return (
+<div>
+<XLoginWindow />
+<Template />
+</div>
+);
+}
 }
 
-customElements.define('x-login',XLogin);
+export default XLogin;

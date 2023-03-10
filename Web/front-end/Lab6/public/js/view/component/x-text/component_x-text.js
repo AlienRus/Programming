@@ -1,31 +1,28 @@
-import template from './template.js'
+import React from 'react';
+import template from './template.js';
 
-class XText extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
+class XText extends React.Component {
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef();
+  }
+  
+  componentDidMount() {
+    this._render();
+  }
+  
+  componentWillUnmount() {
     
-    connectedCallback() {
-        this._render();
-    }
-    
-    disconnectedCallback() {
-
-    }
-    
-    static get observedAttributes() {
-        return [];
-    }
-    
-    attributeChangedCallback(attr, prev, next) {
-
-    }
-    
-    _render() {
-        if(!this.ownerDocument.defaultView) return;
-        this.shadowRoot.innerHTML = template(this);
-    }
+  }
+  
+  render() {
+    return <div ref={this.ref}></div>;
+  }
+  
+  _render() {
+    if (!this.ref.current) return;
+    this.ref.current.innerHTML = template(this);
+  }
 }
 
-customElements.define('x-text', XText);
+export default XText;

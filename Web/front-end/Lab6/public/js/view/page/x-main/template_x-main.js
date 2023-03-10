@@ -1,3 +1,8 @@
-export default function() {return `      
-    <x-products_editor></x-products_editor>
-`}
+import React from 'react';
+import XProductsEditor from './x-products_editor';
+
+export default function XProductsEditorWrapper() {
+return (
+<XProductsEditor />
+);
+}

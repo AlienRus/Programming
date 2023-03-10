@@ -1,44 +1,28 @@
-import template from './template.js'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import template from './template';
 
-class XInput extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.addEventListener('change',(event) => {
-            event.stopPropagation();
-            this._xValue = event.target.value;
-        });
-    }
+function XInput(props) {
+  const [xValue, setXValue] = useState('');
 
-    connectedCallback() {  
-        this._render();
-    }
+  function handleInput(event) {
+    event.stopPropagation();
+    setXValue(event.target.value);
+  }
 
-    disconnectedCallback() {
-
-    }
-
-    static get observedAttributes() {
-
-    }
-
-    attributeChangedCallback(attr, prev, next) {
-        
-    }
-
-    set xValue(value) {
-        this._xValue = value;
-        this._render();
-    }
-
-    get xValue() {
-        return this._xValue;
-    }
-
-    _render() {
-        if(!this.ownerDocument.defaultView) return;
-        this.shadowRoot.innerHTML = template(this);
-    }
+  return (
+    <div onChange={handleInput}>
+      {template(xValue)}
+    </div>
+  );
 }
 
-customElements.define('x-input',XInput);
+XInput.propTypes = {
+  xValue: PropTypes.string,
+};
+
+XInput.defaultProps = {
+  xValue: '',
+};
+
+export default XInput;

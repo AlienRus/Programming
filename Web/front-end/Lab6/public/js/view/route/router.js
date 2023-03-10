@@ -1,57 +1,51 @@
-class Router {
-    constructor() {
-        this._default = '';
-        this._routes = [];
+import React from 'react';
+
+class Router extends React.Component {
+constructor() {
+super();
+this._default = '';
+this._routes = [];
+this.state = {
+view: null
+};
+}
+
+add(url, view) {
+    this._routes.push({'url':url, 'view':view});
+}
+
+default(url) {
+    this._default = url;
+}
+
+async componentDidMount() {
+    const url = window.location.pathname;
+    let view = null;
+
+    if (url === '') {
+        url = this._default;
     }
 
-    add(url, view) {
-        this._routes.push({'url':url, 'view':view});
-    }
-
-    default(url) {
-        this._default = url;
-    }
-
-    async go(url = '') {
-        let view = null;
-
-        if (url === '') {
-            url = this._default;
+    this._routes.forEach(route => {
+        if (route.url === url) {
+            view = route.view;
         }
+    });
 
-        this._routes.forEach(route => {
-            if (route.url === url) {
-                view = route.view;
-            }
-        });
-
-        if (view !== null) {
-            await import('./../page/' + view + '/component.js')
-            let nodeView = document.createElement(view);
-            let nodeApp = document.getElementById('app');
-            if (nodeApp.childNodes.length != 0)
-            {
-                nodeApp.removeChild(nodeApp.childNodes[0]);
-            }
-            nodeApp.appendChild(nodeView);
-            history.pushState(null, null, url);
-        }
+    if (view !== null) {
+        await import('./../page/' + view + '/component.js');
+        const NodeView = React.lazy(() => import('./../page/' + view + '/component.js'));
+        this.setState({view: <NodeView />});
     }
 }
 
-class RouterFactory {
-    static _router = null;
-
-    static _createInstance() {
-        return new Router();
-    }
-
-    static createInstance() {
-        if (RouterFactory._router === null) {
-            RouterFactory._router = RouterFactory._createInstance();
-        }
-        return RouterFactory._router;
-    }
+render() {
+    return (
+        <div id="app">
+            {this.state.view}
+        </div>
+    );
+}
 }
 
-export { RouterFactory };
+export default Router;

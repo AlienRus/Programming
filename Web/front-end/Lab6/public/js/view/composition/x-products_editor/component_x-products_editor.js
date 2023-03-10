@@ -1,66 +1,80 @@
-import template from './template.js'
+import React from 'react';
+import XButton from './../../component/x-button/component.js';
+import XInput from './../../component/x-input/component.js';
+import XTable from './../../component/x-table/component.js';
+import { ProductFactory } from '../../../domain/service.js';
+import { RouterFactory } from './../../route/router.js';
 
-import './../../component/x-button/component.js'
-import './../../component/x-input/component.js'
-import './../../component/x-table/component.js'
-
-import { ProductFactory } from '../../../domain/service.js'
-import { RouterFactory } from './../../route/router.js'
-
-class XProductsEditor extends HTMLElement {
-    constructor() {  
-        super();   
-        this.attachShadow({ mode: 'open' });
+class XProductsEditor extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            products: [],
+            name: '',
+            price: '',
+            description: ''
+        };
     }
 
-    connectedCallback() {  
-        this._render();
+    async componentDidMount() {
+        await this.fetchProducts();
     }
 
-    disconnectedCallback() {
-
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    attributeChangedCallback(attr, prev, next) {
-
-    }
-
-    async _btn_add_listener(event) {
-        event.stopPropagation();
-        let name = (this.shadowRoot.childNodes[3].xValue);
-        let price = (this.shadowRoot.childNodes[5].xValue);
-        let description = (this.shadowRoot.childNodes[7].xValue);
+    async fetchProducts() {
         let product = ProductFactory.createInstance();
-        product.setProduct(name, price, description);
-        let result = await product.add();
-        if(result.status == 200) {
-            this._render();
-        } else if(result.status == 401) {
+        let result = await product.get();
+        if (result.status === 200) {
+            this.setState({ products: result.data });
+        } else if (result.status === 401) {
             localStorage.removeItem('AutoSellUserToken');
             let router = RouterFactory.createInstance();
             router.go('login');
-        } else {
-            this._render();
         }
     }
 
-    _btn_exit_listener(event) {
-        event.stopPropagation();
+    async handleAddProduct(event) {
+        event.preventDefault();
+        let product = ProductFactory.createInstance();
+        product.setProduct(this.state.name, this.state.price, this.state.description);
+        let result = await product.add();
+        if (result.status === 200) {
+            await this.fetchProducts();
+            this.setState({ name: '', price: '', description: '' });
+        } else if (result.status === 401) {
+            localStorage.removeItem('AutoSellUserToken');
+            let router = RouterFactory.createInstance();
+            router.go('login');
+        }
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
+        this.setState({ [name]: value });
+    }
+
+    handleExit() {
         localStorage.removeItem('AutoSellUserToken');
         let router = RouterFactory.createInstance();
         router.go('login');
     }
 
-    _render() {     
-        if(!this.ownerDocument.defaultView) return;
-        this.shadowRoot.innerHTML = template(this);
-        this.shadowRoot.childNodes[1].addEventListener('click', this._btn_exit_listener.bind(this));
-        this.shadowRoot.childNodes[9].addEventListener('click', this._btn_add_listener.bind(this));
+    render() {
+        return (
+            <div>
+                <h1>AutoSell</h1>
+                <XTable products={this.state.products} />
+                <form onSubmit={this.handleAddProduct.bind(this)}>
+                    <XInput name="name" label="Name" value={this.state.name} onChange={this.handleInputChange.bind(this)} />
+                    <XInput name="price" label="Price" value={this.state.price} onChange={this.handleInputChange.bind(this)} />
+                    <XInput name="description" label="Description" value={this.state.description} onChange={this.handleInputChange.bind(this)} />
+                    <XButton type="submit">Add</XButton>
+                </form>
+                <XButton onClick={this.handleExit.bind(this)}>Exit</XButton>
+            </div>
+        );
     }
 }
 
-customElements.define('x-products_editor', XProductsEditor);
+export default XProductsEditor;

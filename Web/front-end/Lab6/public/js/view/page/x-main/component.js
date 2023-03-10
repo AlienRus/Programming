@@ -1,32 +1,16 @@
-import template from './template.js'
-import '../../composition/x-products_editor/component.js'
+import React from 'react';
+import Template from './template.js';
+import XProductsEditor from '../../composition/x-products_editor/component.js';
 
-class XMain extends HTMLElement {
-    constructor() { 
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
-
-    connectedCallback() {  
-        this._render();
-    }
-
-    disconnectedCallback() {
-
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    attributeChangedCallback(attr, prev, next) {
-
-    }
-
-    _render() {    
-        if (!this.ownerDocument.defaultView) return;    
-        this.shadowRoot.innerHTML = template(this);      
-    }
+class XMain extends React.Component {
+render() {
+return (
+<div>
+<XProductsEditor />
+<Template />
+</div>
+);
+}
 }
 
-customElements.define('x-main',XMain);
+export default XMain;

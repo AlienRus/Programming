@@ -1,31 +1,37 @@
+import React from 'react';
 import template from './template.js'
 
-class XButton extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
-    
-    connectedCallback() {
-        this._render();
-    }
-    
-    disconnectedCallback() {
-
-    }
-    
-    static get observedAttributes() {
-        return [];
-    }
-    
-    attributeChangedCallback(attr, prev, next) {
-
-    }
-    
-    _render() {
-        if(!this.ownerDocument.defaultView) return;
-        this.shadowRoot.innerHTML = template(this);
-    }
+class XButton extends React.Component {
+constructor() {
+super();
+this.state = {};
 }
 
-customElements.define('x-button',XButton);
+javascript
+componentDidMount() {
+    this._render();
+}
+
+componentWillUnmount() {
+
+}
+
+static get observedAttributes() {
+    return [];
+}
+
+attributeChangedCallback(attr, prev, next) {
+
+}
+
+_render() {
+    if(!this.ownerDocument.defaultView) return;
+    this.setState({template: template(this)});
+}
+
+render() {
+    return <div dangerouslySetInnerHTML={{__html: this.state.template}} />;
+}
+}
+
+export default XButton;

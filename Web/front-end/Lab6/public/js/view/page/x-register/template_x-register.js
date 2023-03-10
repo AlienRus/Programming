@@ -1,3 +1,8 @@
-export default function() {return `      
-    <x-register_window></x-register_window>
-`}
+import React from 'react';
+import XRegisterWindow from './x-register_window';
+
+export default function XRegisterWindowWrapper() {
+return (
+<XRegisterWindow />
+);
+}

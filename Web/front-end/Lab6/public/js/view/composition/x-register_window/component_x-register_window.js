@@ -1,69 +1,45 @@
-import template from './template.js'
+import React, { useState } from 'react';
+import XButton from './../../component/x-button/component.js';
+import XInput from './../../component/x-input/component.js';
+import XText from './../../component/x-text/component.js';
+import { UserFactory } from '../../../domain/service.js';
+import { RouterFactory } from './../../route/router.js';
 
-import './../../component/x-button/component.js'
-import './../../component/x-input/component.js'
-import './../../component/x-text/component.js'
+function XRegisterWindow() {
+  const [message, setMessage] = useState('');
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
-import { UserFactory } from '../../../domain/service.js'
-import { RouterFactory } from './../../route/router.js'
-
-class XRegisterWindow extends HTMLElement {
-    constructor() {  
-        super();   
-        this.attachShadow({ mode: 'open' });
+  const handleRegisterClick = async () => {
+    const user = UserFactory.createInstance();
+    user.setUser(login, password, email);
+    const result = await user.registerQuery();
+    if (result.status === 200) {
+      setMessage('Register is complete! Please, go back to login.');
+    } else if (result.status === 401) {
+      setMessage('User already exist! Try another login or email.');
+    } else {
+      setMessage('Server error! Try again.');
     }
+  };
 
-    connectedCallback() {  
-        let str = "";
-        this._render(str);
-    }
+  const handleBackClick = () => {
+    const router = RouterFactory.createInstance();
+    router.go('login');
+  };
 
-    disconnectedCallback() {
-
-    }
-
-    static get observedAttributes() {
-        return [];
-    }
-
-    attributeChangedCallback(attr, prev, next) {
-
-    }
-
-    async _btn_register_listener(event) {
-        event.stopPropagation();
-        let login = (this.shadowRoot.childNodes[3].xValue);
-        let password = (this.shadowRoot.childNodes[5].xValue);
-        let email = (this.shadowRoot.childNodes[7].xValue);
-        let user = UserFactory.createInstance();
-        user.setUser(login, password, email);
-        let result = await user.registerQuery();
-        if (result.status == 200) {
-            let str = "Register is complete! Please, go back to login.";
-            this._render(str);
-        }
-        else if (result.status == 401) {
-            let str = "User already exist! Try another login or email.";
-            this._render(str);
-        }
-        else {
-            let str = "Server error! Try again.";
-            this._render(str);
-        }
-    }
-
-    _btn_back_listener(event) {
-        event.stopPropagation();
-        let router = RouterFactory.createInstance();
-        router.go('login')
-    }
-
-    _render(str) {     
-        if(!this.ownerDocument.defaultView) return;
-        this.shadowRoot.innerHTML = template(str);
-        this.shadowRoot.childNodes[9].addEventListener('click', this._btn_register_listener.bind(this));
-        this.shadowRoot.childNodes[11].addEventListener('click', this._btn_back_listener.bind(this));
-    }
+  return (
+    <>
+      <XButton onClick={handleRegisterClick}>Register</XButton>
+      <XInput value={login} onChange={(event) => setLogin(event.target.value)} />
+      <XInput value={password} onChange={(event) => setPassword(event.target.value)} />
+      <XInput value={email} onChange={(event) => setEmail(event.target.value)} />
+      <XButton onClick={handleRegisterClick}>Add</XButton>
+      <XText>{message}</XText>
+      <XButton onClick={handleBackClick}>Back</XButton>
+    </>
+  );
 }
 
-customElements.define('x-register_window',XRegisterWindow);
+export default XRegisterWindow;

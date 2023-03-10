@@ -1,7 +1,6 @@
-export default function() {return ` 
-  <div>       
-   <button>
-    <slot></slot>  
-   </button>
-  </div>              
-`}
+export default function() {
+return `
+<style>
+:host {
+display: inline-block;
+}
