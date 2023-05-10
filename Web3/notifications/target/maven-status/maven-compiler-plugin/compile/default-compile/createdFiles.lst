@@ -1,0 +1,6 @@
+project\controller\timer\Timer.class
+project\model\interfaces\IPostman.class
+project\controller\message\NotificationsSender.class
+project\controller\config\Config.class
+project\controller\config\CorsFilter.class
+project\model\dto\Notification.class
