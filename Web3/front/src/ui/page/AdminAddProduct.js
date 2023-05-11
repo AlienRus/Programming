@@ -8,7 +8,7 @@ import Input from "../comp/input";
 import { AddProduct } from "../../req/reqF";
 import { Product } from "../../trans/product";
 
-function PA2() {
+function AdminAddProduct() {
 
     const [error, setError] = useState("");
 
@@ -62,4 +62,4 @@ function PA2() {
     );
 }
 
-export default PA2;
+export default AdminAddProduct;

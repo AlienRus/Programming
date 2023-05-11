@@ -11,7 +11,7 @@ import { User } from "../../trans/user";
 import { useDispatcher } from "../../store/store";
 import { WSocketTm } from "../../websocket/websocket";
 
-function PSI() {
+function Authorization() {
 
     const [error, setError] = useState("");
 
@@ -70,14 +70,14 @@ function PSI() {
 
                 if (b.role === "user") {
                     setRoleUser("user");
-                    router('/pu1')
+                    router('/UserCatalog')
                     //WSocketTm((a) => { alert(a) }, "/message");
                 }
                 if (b.role === "admin") 
                 {
                     console.log("111111");
                     setRoleAdmin("admin");
-                    router('/pa1')
+                    router('/AdminCatalog')
                     //WSocketTm((a) => { alert(a) }, "/message");
                 }
             } else {
@@ -95,7 +95,7 @@ function PSI() {
             <div style={{ display: "flex", width: "100%", flexDirection: "column", marginTop: "5%" }}>
                 <Input type='text' text="Логин" onChange={handlerValue}></Input>
                 <Input type='password' text="Пароль" onChange={handlerPass} ></Input>
-                <h5 style={{ margin: "auto", color: "#6696a2", fontFamily: "Arial" }}><a onClick={() => { router("/psu") }}>Регистрация</a></h5>
+                <h5 style={{ margin: "auto", color: "#6696a2", fontFamily: "Arial" }}><a onClick={() => { router("/Registration") }}>Регистрация</a></h5>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <Error text={error}></Error>
@@ -105,4 +105,4 @@ function PSI() {
     );
 }
 
-export default PSI;
+export default Authorization;

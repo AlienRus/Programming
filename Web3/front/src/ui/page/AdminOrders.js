@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { Order } from "../../trans/order";
 import { useDispatcher } from "../../store/store";
 
-function PA3() {
+function AdminOrders() {
 
     const [error, setError] = useState("");
 
@@ -67,7 +67,7 @@ function PA3() {
             orders.push({
                 products: res[i].products, id: res[i].id, item: [{ name: n }, { name: res[i].id }, { name: res[i].totalPrice }, { name: res[i].createdAt.substring(0, 10) }, { name: res[i].status }, {
                     name: <a onClick={(event) => {
-                        router("/pa4");
+                        router("/AdminOrdersInfo");
                         const orderA = { prod: orders[i].products, }
                         serIdProdA(orders[i].id);
                         let t = 0;
@@ -107,4 +107,4 @@ function PA3() {
     );
 }
 
-export default PA3;
+export default AdminOrders;

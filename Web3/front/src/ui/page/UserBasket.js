@@ -11,7 +11,7 @@ import { AddOrder } from "../../req/reqF";
 import { Order } from "../../trans/order";
 import { useListenerProd } from "../../store/store";
 
-function PU2() {
+function UserBasket() {
 
     const [error, setError] = useState("");
 
@@ -114,4 +114,4 @@ function PU2() {
     );
 }
 
-export default PU2;
+export default UserBasket;

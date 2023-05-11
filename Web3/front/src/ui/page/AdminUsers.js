@@ -10,7 +10,7 @@ import { DeleteUser, StatusUser, Userss } from "../../req/reqF";
 import { User } from "../../trans/user";
 import { WSocket } from "../../websocket/websocket";
 
-function PA5() {
+function AdminUsers() {
 
     const [error, setError] = useState("");
 
@@ -80,4 +80,4 @@ function PA5() {
     );
 }
 
-export default PA5;
+export default AdminUsers;

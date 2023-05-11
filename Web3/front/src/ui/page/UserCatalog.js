@@ -15,7 +15,7 @@ import { WSocket, WSocketTm, closeWSTimer, createWSTimer } from "../../websocket
 
 let socket;
 
-function PU1() {
+function UserCatalog() {
 
     const router = useNavigate()
 
@@ -148,7 +148,7 @@ function PU1() {
                         setError("Выберите товары")
                     }
                     else {
-                        router('/pu2')
+                        router('/UserBasket')
                     }
                 }}></Button>
             </div>
@@ -156,4 +156,4 @@ function PU1() {
     );
 }
 
-export default PU1;
+export default UserCatalog;

@@ -24,7 +24,7 @@ public class Timer {
         "Думаете что же купить? Посмотрите обзоры на товары! Недавно вышел новый обзор на наш товар: https://3dnews.ru/1076198/obzor-nvidia-geforce-rtx-4090"
     );
 
-    private int index = 0;
+    private boolean index = false;
 
     @Resource
     TimerService tservice; 
@@ -39,7 +39,13 @@ public class Timer {
   
     @Timeout
     public void timeout() {
-        postman.send(new Notification(ads.get(index)));
-        index = index == 1 ? 0 : 1;
+        if(index){
+            postman.send(new Notification(ads.get(0)));
+        }
+        else {
+            postman.send(new Notification(ads.get(1)));
+        }
+        index = !index;
+        //index = index == 1 ? 0 : 1;
     }
 }

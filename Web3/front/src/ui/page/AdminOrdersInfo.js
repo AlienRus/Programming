@@ -4,38 +4,37 @@ import Tabl from "../comp/tabl";
 import "../../css/fon.css"
 import Title from "../comp/title";
 //import {useSelector} from "react-redux";
-import {useListenerIdProdU, useListenerOrderU} from "../../store/store";
+import { useListenerIdProdA, useListenerOrderA } from "../../store/store";
 
-function PU4() {
+function AdminOrdersInfo() {
 
     const [valueInp, setValueInp] = useState([]);
     const ValueInp = (valueInp) => { setValueInp(valueInp) }
 
     // мобикс
-    const orderU = useListenerOrderU();
+    const orderA = useListenerOrderA();
 
-    const idProdU = useListenerIdProdU();
+    const idProdA = useListenerIdProdA();
 
     /* редакс
-    const orderU = useSelector(state => state.orderU);
+    const orderA = useSelector(state => state.orderA);
 
-    const idProdU = useSelector(state => state.idProdU);
-
+    const idProdA = useSelector(state => state.idProdA);
      */
 
     return (
         <>
-            <Title title={"Заказ с ID " + String(idProdU)}></Title>
-            <Menu role="user" ></Menu>
+            <Title title={"Заказ с ID " + String(idProdA)}></Title>
+            <Menu role="admin" ></Menu>
             <Tabl tytles={[
                 { id: 1, name: '№' },
                 { id: 2, name: 'Название' },
                 { id: 3, name: 'Категория' },
                 { id: 4, name: 'Цена' },
                 { id: 5, name: 'Кол-во' },
-            ]} items={orderU} onChange={ValueInp} ></Tabl>
+            ]} items={orderA ?? []} onChange={ValueInp} ></Tabl>
         </>
     );
 }
 
-export default PU4;
+export default AdminOrdersInfo;

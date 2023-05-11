@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 //import {useDispatch} from "react-redux";
 import { useDispatcher } from "../../store/store";
 
-function PU3() {
+function UserOrders() {
 
     const router = useNavigate();
 
@@ -46,7 +46,7 @@ function PU3() {
             orders.push({
                 products: res[i].products, id: res[i].id, item: [{ name: n }, { name: res[i].id }, { name: res[i].totalPrice }, { name: res[i].createdAt.substring(0, 10) }, { name: res[i].status }, {
                     name: <a onClick={(event) => {
-                        router("/pu4");
+                        router("/UserOrdersInfo");
                         const orderU = { prod: orders[i].products, }
                         serIdProdU(orders[i].id);
                         let t = 0;
@@ -83,4 +83,4 @@ function PU3() {
     );
 }
 
-export default PU3;
+export default UserOrders;

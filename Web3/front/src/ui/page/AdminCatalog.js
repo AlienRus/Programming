@@ -8,7 +8,7 @@ import Error from "../comp/error";
 import { DeleteProduct, Products } from "../../req/reqF";
 import { WSocket } from "../../websocket/websocket";
 
-function PA1() {
+function AdminCatalog() {
 
     const [error, setError] = useState("")
 
@@ -70,4 +70,4 @@ function PA1() {
     );
 }
 
-export default PA1;
+export default AdminCatalog;

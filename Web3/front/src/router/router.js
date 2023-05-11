@@ -1,16 +1,16 @@
 import React from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import PSI from "../ui/page/PSI";
-import PSU from "../ui/page/PSU";
-import PU1 from "../ui/page/PU1";
-import PU2 from "../ui/page/PU2";
-import PU3 from "../ui/page/PU3";
-import PU4 from "../ui/page/PU4";
-import PA1 from "../ui/page/PA1";
-import PA2 from "../ui/page/PA2";
-import PA3 from "../ui/page/PA3";
-import PA4 from "../ui/page/PA4";
-import PA5 from "../ui/page/PA5";
+import Authorization from "../ui/page/Authorization";
+import Registration from "../ui/page/Registration";
+import UserCatalog from "../ui/page/UserCatalog";
+import UserBasket from "../ui/page/UserBasket";
+import UserOrders from "../ui/page/UserOrders";
+import UserOrdersInfo from "../ui/page/UserOrdersInfo";
+import AdminCatalog from "../ui/page/AdminCatalog";
+import AdminAddProduct from "../ui/page/AdminAddProduct";
+import AdminOrders from "../ui/page/AdminOrders";
+import AdminOrdersInfo from "../ui/page/AdminOrdersInfo";
+import AdminUsers from "../ui/page/AdminUsers";
 import {useListener} from "../store/store";
 //import {useSelector} from "react-redux";
 
@@ -21,23 +21,23 @@ const Router = () => {
     const role = useListener("role"); // мобикс
 
     const userRoutes = [
-        {p : '/pu1', e: <PU1/>},
-        {p : '/pu2', e: <PU2/>},
-        {p : '/pu3', e: <PU3/>},
-        {p : '/pu4', e: <PU4/>},
+        {p : '/UserCatalog', e: <UserCatalog/>},
+        {p : '/UserBasket', e: <UserBasket/>},
+        {p : '/UserOrders', e: <UserOrders/>},
+        {p : '/UserOrdersInfo', e: <UserOrdersInfo/>},
     ];
 
     const adminRoutes = [
-        {p : '/pa1', e: <PA1/>},
-        {p : '/pa2', e: <PA2/>},
-        {p : '/pa3', e: <PA3/>},
-        {p : '/pa4', e: <PA4/>},
-        {p : '/pa5', e: <PA5/>},
+        {p : '/AdminCatalog', e: <AdminCatalog/>},
+        {p : '/AdminAddProduct', e: <AdminAddProduct/>},
+        {p : '/AdminOrders', e: <AdminOrders/>},
+        {p : '/AdminOrdersInfo', e: <AdminOrdersInfo/>},
+        {p : '/AdminUsers', e: <AdminUsers/>},
     ];
 
     const commonRoutes = [
-        {p : '/psi', e: <PSI/>},
-        {p : '/psu', e: <PSU/>},
+        {p : '/Authorization', e: <Authorization/>},
+        {p : '/Registration', e: <Registration/>},
     ];
 
     const routes = role === "user" ? [...userRoutes, ...commonRoutes] :
@@ -49,7 +49,7 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 {routes.map(route => <Route element= {route.e} path={route.p}/>)}
-                <Route path={"/*"} element={<PSI/>}/>
+                <Route path={"/*"} element={<Authorization/>}/>
             </Routes>
         </BrowserRouter>
     );

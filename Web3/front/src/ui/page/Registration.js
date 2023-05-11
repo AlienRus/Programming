@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { User } from "../../trans/user";
 import { Reg } from "../../req/reqF";
 
-function PSU() {
+function Registration() {
 
     const [error, setError] = useState("");
 
@@ -59,7 +59,7 @@ function PSU() {
                 <Input type='text' text="Логин" onChange={handlerValue}></Input>
                 <Input type='password' text="Пароль" onChange={handlerPass} ></Input>
                 <Input type='password' text="Повторите пароль" onChange={handlerPassR} ></Input>
-                <h5 style={{ margin: "auto", color: "#6696a2", fontFamily: "Arial" }}><a onClick={() => { router("/psi") }}>Авторизация</a></h5>
+                <h5 style={{ margin: "auto", color: "#6696a2", fontFamily: "Arial" }}><a onClick={() => { router("/Authorization") }}>Авторизация</a></h5>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <Error text={error}></Error>
@@ -69,4 +69,4 @@ function PSU() {
     );
 }
 
-export default PSU;
+export default Registration;
