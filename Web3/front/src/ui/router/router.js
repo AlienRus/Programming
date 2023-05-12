@@ -1,17 +1,17 @@
 import React from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Authorization from "../ui/page/Authorization";
-import Registration from "../ui/page/Registration";
-import UserCatalog from "../ui/page/UserCatalog";
-import UserBasket from "../ui/page/UserBasket";
-import UserOrders from "../ui/page/UserOrders";
-import UserOrdersInfo from "../ui/page/UserOrdersInfo";
-import AdminCatalog from "../ui/page/AdminCatalog";
-import AdminAddProduct from "../ui/page/AdminAddProduct";
-import AdminOrders from "../ui/page/AdminOrders";
-import AdminOrdersInfo from "../ui/page/AdminOrdersInfo";
-import AdminUsers from "../ui/page/AdminUsers";
-import {useListener} from "../store/store";
+import Authorization from "../page/Authorization";
+import Registration from "../page/Registration";
+import UserCatalog from "../page/UserCatalog";
+import UserBasket from "../page/UserBasket";
+import UserOrders from "../page/UserOrders";
+import UserOrdersInfo from "../page/UserOrdersInfo";
+import AdminCatalog from "../page/AdminCatalog";
+import AdminAddProduct from "../page/AdminAddProduct";
+import AdminOrders from "../page/AdminOrders";
+import AdminOrdersInfo from "../page/AdminOrdersInfo";
+import AdminUsers from "../page/AdminUsers";
+import {useListener} from "../../store/store";
 //import {useSelector} from "react-redux";
 
 const Router = () => {

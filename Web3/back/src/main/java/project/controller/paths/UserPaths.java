@@ -23,7 +23,7 @@ import project.model.dto.Order;
 import project.model.dto.User;
 import project.model.interfaces.in.IModelOrder;
 import project.model.interfaces.in.IModelUser;
-import project.model.interfaces.in.IModelUserWs2;
+import project.model.interfaces.out.IModelUserWs2;
 
 @Path("/users")
 public class UserPaths {

@@ -6,7 +6,7 @@ import Button from "../comp/button";
 import Error from "../comp/error";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../trans/user";
-import { Reg } from "../../req/reqF";
+import { Reg } from "../../trans/req/reqF";
 
 function Registration() {
 

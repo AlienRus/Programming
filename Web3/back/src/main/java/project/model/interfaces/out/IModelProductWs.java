@@ -1,8 +1,9 @@
-package project.model.interfaces.in;
+package project.model.interfaces.out;
 
 import jakarta.websocket.Session;
 
-public interface IModelProductWs2 {
+public interface IModelProductWs {
+
     public void addSession(Session session);
 
     public void removeSession(Session session);
@@ -10,5 +11,4 @@ public interface IModelProductWs2 {
     public void sendMessage(String message);
 
     public void sendAll();
-    
 }

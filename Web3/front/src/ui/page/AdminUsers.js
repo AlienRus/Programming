@@ -6,7 +6,7 @@ import Title from "../comp/title";
 import Button from "../comp/button";
 import Error from "../comp/error";
 import del from "../../img/delete.png";
-import { DeleteUser, StatusUser, Userss } from "../../req/reqF";
+import { DeleteUser, StatusUser, Userss } from "../../trans/req/reqF";
 import { User } from "../../trans/user";
 import { WSocket } from "../../websocket/websocket";
 

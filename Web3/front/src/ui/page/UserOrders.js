@@ -4,7 +4,7 @@ import Tabl from "../comp/tabl";
 import "../../css/fon.css"
 import Title from "../comp/title";
 import more from "../../img/more.png"
-import { OrdersUser } from "../../req/reqF";
+import { OrdersUser } from "../../trans/req/reqF";
 import { useNavigate } from "react-router-dom";
 //import {useDispatch} from "react-redux";
 import { useDispatcher } from "../../store/store";

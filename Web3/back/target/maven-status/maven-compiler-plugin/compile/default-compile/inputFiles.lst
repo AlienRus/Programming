@@ -1,4 +1,5 @@
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\paths\OrderPaths.java
+D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\out\IModelProductWs2.java
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\token\TokenValidator.java
 D:\Programming\6sem\Web3\back\src\main\java\project\model\dto\User.java
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\websocket\message\messageEndpoint.java
@@ -9,7 +10,6 @@ D:\Programming\6sem\Web3\back\src\main\java\project\controller\config\CorsFilter
 D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\in\IModelProduct.java
 D:\Programming\6sem\Web3\back\src\main\java\project\model\dto\Order.java
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\websocket\users\usersEndpoint.java
-D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\in\IModelUserWs2.java
 D:\Programming\6sem\Web3\back\src\main\java\project\database\repos\ProductRepository.java
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\token\TokenIssuer.java
 D:\Programming\6sem\Web3\back\src\main\java\project\database\entities\EOrderProduct.java
@@ -17,12 +17,12 @@ D:\Programming\6sem\Web3\back\src\main\java\project\model\UserModelWs2.java
 D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\in\IModelOrder.java
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\interceptor\IdInterceptor.java
 D:\Programming\6sem\Web3\back\src\main\java\project\model\ProductModelWs.java
-D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\in\IModelUserWs.java
 D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\out\IRepositoryOrder.java
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\token\TokenKey.java
+D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\out\IModelUserWs.java
+D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\out\IModelUserWs2.java
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\config\Config.java
 D:\Programming\6sem\Web3\back\src\main\java\project\model\UserModelWs.java
-D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\in\IModelProductWs.java
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\interceptor\IdRequired.java
 D:\Programming\6sem\Web3\back\src\main\java\project\model\dto\Product.java
 D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\in\IModelUser.java
@@ -40,5 +40,5 @@ D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\out\IReposi
 D:\Programming\6sem\Web3\back\src\main\java\project\model\OrderModel.java
 D:\Programming\6sem\Web3\back\src\main\java\project\builder\Build.java
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\token\Token.java
+D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\out\IModelProductWs.java
 D:\Programming\6sem\Web3\back\src\main\java\project\controller\paths\UserPaths.java
-D:\Programming\6sem\Web3\back\src\main\java\project\model\interfaces\in\IModelProductWs2.java

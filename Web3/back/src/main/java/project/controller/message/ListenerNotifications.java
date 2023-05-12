@@ -4,7 +4,7 @@ import jakarta.ejb.MessageDriven;
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import jakarta.jms.MessageListener;
-import project.controller.paths.websocket.message.messageEndpoint;
+import project.controller.websocket.message.messageEndpoint;
 
 @MessageDriven(mappedName = "jms/NotificationsQueue")
 public class ListenerNotifications implements MessageListener {

@@ -5,7 +5,7 @@ import Input from "../comp/input";
 import Button from "../comp/button";
 import Error from "../comp/error";
 import { useNavigate } from "react-router-dom";
-import { Auth } from "../../req/reqF";
+import { Auth } from "../../trans/req/reqF";
 import { User } from "../../trans/user";
 //import {useDispatch} from "react-redux";
 import { useDispatcher } from "../../store/store";

@@ -5,7 +5,7 @@ import Title from "../comp/title";
 import Button from "../comp/button";
 import Error from "../comp/error";
 import Input from "../comp/input";
-import { AddProduct } from "../../req/reqF";
+import { AddProduct } from "../../trans/req/reqF";
 import { Product } from "../../trans/product";
 
 function AdminAddProduct() {

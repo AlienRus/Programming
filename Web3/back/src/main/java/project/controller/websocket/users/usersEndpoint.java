@@ -1,4 +1,4 @@
-package project.controller.paths.websocket.users;
+package project.controller.websocket.users;
 
 import jakarta.inject.Inject;
 import jakarta.websocket.OnClose;
@@ -6,7 +6,7 @@ import jakarta.websocket.OnMessage;
 import jakarta.websocket.OnOpen;
 import jakarta.websocket.Session;
 import jakarta.websocket.server.ServerEndpoint;
-import project.model.interfaces.in.IModelUserWs2;
+import project.model.interfaces.out.IModelUserWs2;
 
 @ServerEndpoint("/asyncUsers")
 public class usersEndpoint {

@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import jakarta.ejb.Asynchronous;
 import jakarta.websocket.Session;
-import project.model.interfaces.in.IModelUserWs;
+import project.model.interfaces.out.IModelUserWs;
 
 public class UserModelWs implements IModelUserWs {
     private final static ConcurrentLinkedQueue<Session> queue = new ConcurrentLinkedQueue<>();

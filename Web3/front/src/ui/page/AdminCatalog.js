@@ -5,7 +5,7 @@ import "../../css/fon.css"
 import Title from "../comp/title";
 import Button from "../comp/button";
 import Error from "../comp/error";
-import { DeleteProduct, Products } from "../../req/reqF";
+import { DeleteProduct, Products } from "../../trans/req/reqF";
 import { WSocket } from "../../websocket/websocket";
 
 function AdminCatalog() {

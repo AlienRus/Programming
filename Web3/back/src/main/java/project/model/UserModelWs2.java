@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import jakarta.annotation.Resource;
 import jakarta.enterprise.concurrent.ManagedExecutorService;
 import jakarta.websocket.Session;
-import project.model.interfaces.in.IModelUserWs2;
+import project.model.interfaces.out.IModelUserWs2;
 
 public class UserModelWs2  implements IModelUserWs2{
 

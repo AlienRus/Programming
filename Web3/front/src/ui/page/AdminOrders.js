@@ -7,7 +7,7 @@ import more from "../../img/more.png";
 import Error from "../comp/error";
 import Button from "../comp/button";
 //import {useDispatch} from "react-redux";
-import { Orders, StatusOrder } from "../../req/reqF";
+import { Orders, StatusOrder } from "../../trans/req/reqF";
 import { useNavigate } from "react-router-dom";
 import { Order } from "../../trans/order";
 import { useDispatcher } from "../../store/store";

@@ -7,7 +7,7 @@ import Button from "../comp/button";
 import Error from "../comp/error";
 import plus from "../../img/plus.png";
 import minus from "../../img/minus.png";
-import { Products } from "../../req/reqF";
+import { Products } from "../../trans/req/reqF";
 //import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatcher, useListener } from "../../store/store";

@@ -6,7 +6,6 @@ import jakarta.jms.JMSContext;
 import jakarta.jms.JMSProducer;
 import jakarta.jms.Message;
 import jakarta.jms.Queue;
-import jakarta.jms.Topic;
 import project.model.dto.Notification;
 import project.model.interfaces.IPostman;
 

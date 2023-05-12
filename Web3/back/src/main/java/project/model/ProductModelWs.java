@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import jakarta.ejb.Asynchronous;
 import jakarta.websocket.Session;
-import project.model.interfaces.in.IModelProductWs;
+import project.model.interfaces.out.IModelProductWs;
 
 public class ProductModelWs implements IModelProductWs {
 

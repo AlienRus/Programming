@@ -1,4 +1,4 @@
-package project.controller.paths.websocket.message;
+package project.controller.websocket.message;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 

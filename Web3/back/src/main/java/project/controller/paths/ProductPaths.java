@@ -17,7 +17,7 @@ import project.builder.Build;
 import project.controller.interceptor.IdRequired;
 import project.model.dto.Product;
 import project.model.interfaces.in.IModelProduct;
-import project.model.interfaces.in.IModelProductWs2;
+import project.model.interfaces.out.IModelProductWs2;
 
 @Path("/products")
 public class ProductPaths {

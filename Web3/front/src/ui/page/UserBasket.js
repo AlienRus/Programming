@@ -7,7 +7,7 @@ import Button from "../comp/button";
 import Error from "../comp/error";
 import del from "../../img/delete.png"
 //import {useSelector} from "react-redux";
-import { AddOrder } from "../../req/reqF";
+import { AddOrder } from "../../trans/req/reqF";
 import { Order } from "../../trans/order";
 import { useListenerProd } from "../../store/store";
 
