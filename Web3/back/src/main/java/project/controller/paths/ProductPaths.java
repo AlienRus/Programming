@@ -17,7 +17,7 @@ import project.builder.Build;
 import project.controller.interceptor.IdRequired;
 import project.model.dto.Product;
 import project.model.interfaces.in.IModelProduct;
-import project.model.interfaces.out.IModelProductWs2;
+import project.model.interfaces.in.IProductSender;
 
 @Path("/products")
 public class ProductPaths {
@@ -26,8 +26,8 @@ public class ProductPaths {
     @Build
     private IModelProduct modelProduct;
 
-    @Inject
-    private IModelProductWs2 modelProductWs;
+    @Inject @Build
+    private IProductSender productSender;
 
     private Jsonb jsonb = JsonbBuilder.create();
 
@@ -59,7 +59,7 @@ public class ProductPaths {
         try {
             Product product = jsonb.fromJson(jsonProduct, Product.class);
             modelProduct.addProduct(product);
-            modelProductWs.sendAll();
+            productSender.sendAll();
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e).build();
         }
@@ -79,7 +79,7 @@ public class ProductPaths {
             List<Product> products = jsonb.fromJson(listId, new ArrayList<Product>() {
             }.getClass().getGenericSuperclass());
             modelProduct.deleteProduct(products);
-            modelProductWs.sendAll();
+            productSender.sendAll();
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e).build();
         }

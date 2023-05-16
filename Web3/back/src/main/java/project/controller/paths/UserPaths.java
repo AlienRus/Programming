@@ -23,7 +23,7 @@ import project.model.dto.Order;
 import project.model.dto.User;
 import project.model.interfaces.in.IModelOrder;
 import project.model.interfaces.in.IModelUser;
-import project.model.interfaces.out.IModelUserWs2;
+import project.model.interfaces.in.IUserSender;
 
 @Path("/users")
 public class UserPaths {
@@ -35,8 +35,8 @@ public class UserPaths {
     @Build
     private IModelOrder modelOrder;
 
-    @Inject
-    private IModelUserWs2 modelUsersWs;
+    @Inject @Build
+    private IUserSender userSender;
 
     private Jsonb jsonb = JsonbBuilder.create();
 
@@ -66,7 +66,7 @@ public class UserPaths {
         try {
             User user = jsonb.fromJson(userJson, User.class);
             if (modelUser.regUser(user)) {
-                modelUsersWs.sendAll();
+                userSender.sendAll();
                 return Response.status(Response.Status.OK).build();
             } else {
                 return Response.status(Response.Status.CONFLICT).build();
@@ -100,7 +100,7 @@ public class UserPaths {
         try {
             User user = jsonb.fromJson(userJson, User.class);
             modelUser.setUserRole(user);
-            modelUsersWs.sendAll();
+            userSender.sendAll();
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e).build();
         }
@@ -120,7 +120,7 @@ public class UserPaths {
             List<User> users = jsonb.fromJson(listId, new ArrayList<User>() {
             }.getClass().getGenericSuperclass());
             modelUser.deleteUser(users);
-            modelUsersWs.sendAll();
+            userSender.sendAll();
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e).build();
         }

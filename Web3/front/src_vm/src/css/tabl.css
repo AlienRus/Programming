@@ -1,0 +1,12 @@
+/* Стили таблицы */
+table.iksweb{text-decoration: none;border-collapse:collapse;width:80%;text-align:center; margin: auto; margin-top: 10%; margin-left: 12%; font-family: arial;
+    font-size: 14px;}
+table.iksweb th{font-weight:normal;font-size:14px; color: #000000;background-color: #629496;}
+table.iksweb td{font-size:16px;color:#354251;}
+table.iksweb td,table.iksweb th{white-space:pre-wrap;padding:21px 13px;line-height:16px;vertical-align: middle;border: 1px solid #c3cfd7;}  table.iksweb tr:hover{background-color:#ccd8e0}
+table.iksweb tr:hover td{color:#354251;cursor:default;}
+
+.back{
+    background-color: #a1b3b4;
+}
+/* Стили таблицы*/

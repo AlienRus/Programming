@@ -1,31 +1,43 @@
 package project.controller.websocket.users;
 
-import jakarta.inject.Inject;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import jakarta.websocket.OnClose;
 import jakarta.websocket.OnMessage;
 import jakarta.websocket.OnOpen;
 import jakarta.websocket.Session;
 import jakarta.websocket.server.ServerEndpoint;
-import project.model.interfaces.out.IModelUserWs2;
+import project.model.interfaces.out.ISenderUser;
 
 @ServerEndpoint("/asyncUsers")
-public class usersEndpoint {
+public class usersEndpoint implements ISenderUser {
 
-    @Inject
-    IModelUserWs2 modelUsersWs;
+    private final static ConcurrentLinkedQueue<Session> queue = new ConcurrentLinkedQueue<>();
 
     @OnOpen
-    public void connectionOpen(Session session) {
-        modelUsersWs.addSession(session);
-    }
-
-    @OnMessage
-    public void messageProcess(Session session, String message) {
-        modelUsersWs.sendAll();
+    public void onOpen(Session session){
+        queue.add(session);
     }
 
     @OnClose
-    public void connectionClose(Session session) {
-        modelUsersWs.removeSession(session);
+    public void onClose(Session session){
+        queue.remove(session);
+    }
+
+    @OnMessage
+    public void OnMessage(String message){
+        for (Session session : queue) {
+            if (session.isOpen()) {
+                session.getAsyncRemote().sendText(message);
+            }
+        }
+    }
+
+    @Override
+    public void sendAll() {
+        for (Session session : queue) {
+            if (session.isOpen()) {
+                session.getAsyncRemote().sendObject(true);
+            }
+        }
     }
 }

@@ -6,9 +6,13 @@ import jakarta.inject.Inject;
 import project.model.interfaces.in.IModelOrder;
 import project.model.interfaces.in.IModelProduct;
 import project.model.interfaces.in.IModelUser;
+import project.model.interfaces.in.IProductSender;
+import project.model.interfaces.in.IUserSender;
 import project.model.interfaces.out.IRepositoryOrder;
 import project.model.interfaces.out.IRepositoryProduct;
 import project.model.interfaces.out.IRepositoryUser;
+import project.model.interfaces.out.ISenderProduct;
+import project.model.interfaces.out.ISenderUser;
 
 public class Builder {
     @Inject @Default
@@ -45,5 +49,29 @@ public class Builder {
     public IModelOrder buildIModelOrder(){
         modelOrder.setRepository(repositoryOrder);
         return modelOrder;
+    }
+
+    @Inject @Default
+    public ISenderProduct sender;
+
+    @Inject @Default
+    public IProductSender productSender;
+
+    @Produces @Build
+    public IProductSender builProductSender(){
+        productSender.setSender(sender);
+        return productSender;
+    }
+
+    @Inject @Default
+    public IUserSender userSender;
+
+    @Inject @Default
+    public ISenderUser senderUser;
+
+    @Produces @Build
+    public IUserSender builUserSender(){
+        userSender.setSender(senderUser);
+        return userSender;
     }
 }
