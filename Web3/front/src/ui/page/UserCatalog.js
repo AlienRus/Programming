@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Menu from "../comp/menu";
 import Tabl from "../comp/tabl";
 import "../../css/fon.css";
@@ -7,9 +7,8 @@ import Button from "../comp/button";
 import Error from "../comp/error";
 import plus from "../../img/plus.png";
 import minus from "../../img/minus.png";
-//import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useUserCatalog } from "../../store/viewmodel";
+import { useUserCatalog } from "../../store/hooks/useUserCatalog";
 
 function UserCatalog() {
   const navigate = useNavigate();

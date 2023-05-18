@@ -3,8 +3,7 @@ import Menu from "../comp/menu";
 import Tabl from "../comp/tabl";
 import "../../css/fon.css";
 import Title from "../comp/title";
-//import {useSelector} from "react-redux";
-import { useListenerIdProdA, useListenerOrderA } from "../../store/store";
+import { useAdminOrdersInfo } from "../../store/hooks/useAdminOrdersInfo";
 
 function AdminOrdersInfo() {
   const [valueInp, setValueInp] = useState([]);
@@ -12,16 +11,7 @@ function AdminOrdersInfo() {
     setValueInp(valueInp);
   };
 
-  // мобикс
-  const orderA = useListenerOrderA();
-
-  const idProdA = useListenerIdProdA();
-
-  /* редакс
-    const orderA = useSelector(state => state.orderA);
-
-    const idProdA = useSelector(state => state.idProdA);
-     */
+  const { orderA, idProdA } = useAdminOrdersInfo();
 
   return (
     <>

@@ -5,7 +5,7 @@ import "../../css/fon.css";
 import Title from "../comp/title";
 import Button from "../comp/button";
 import Error from "../comp/error";
-import { useAdminCatalog } from "../../store/viewmodel";
+import { useAdminCatalog } from "../../store/hooks/useAdminCatalog";
 
 function AdminCatalog() {
   const [error, setError] = useState("");

@@ -5,8 +5,7 @@ import Input from "../comp/input";
 import Button from "../comp/button";
 import Error from "../comp/error";
 import { useNavigate } from "react-router-dom";
-import { useAuthorization } from "../../store/viewmodel";
-//import {useDispatch} from "react-redux";
+import { useAuthorization } from "../../store/hooks/useAuthorization";
 
 function Authorization() {
   const [error, setError] = useState("");
@@ -19,7 +18,7 @@ function Authorization() {
   const [valuePas, setValuePas] = useState("");
   const handlerPass = (e) => setValuePas(e.target.value);
 
-  const { userNotFound, role, auth, setRoleAdmin, setRoleUser } =
+  const { auth, setRoleAdmin, setRoleUser } =
     useAuthorization();
 
   const navigatePath = (role) => {

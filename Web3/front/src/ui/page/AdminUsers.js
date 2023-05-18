@@ -5,9 +5,8 @@ import "../../css/fon.css";
 import Title from "../comp/title";
 import Button from "../comp/button";
 import Error from "../comp/error";
-import del from "../../img/delete.png";
 
-import { useAdminUsers } from "../../store/viewmodel";
+import { useAdminUsers } from "../../store/hooks/useAdminUsers";
 
 function AdminUsers() {
   const [error, setError] = useState("");
@@ -17,7 +16,7 @@ function AdminUsers() {
     setValueInp(valueInp);
   };
 
-  const { users, statusUser, handleUserClick } = useAdminUsers();
+  const { users, statusUser } = useAdminUsers();
 
   const statUser = () => {
     if (valueInp.length !== 0) {

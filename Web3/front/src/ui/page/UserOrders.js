@@ -5,8 +5,7 @@ import "../../css/fon.css";
 import Title from "../comp/title";
 import more from "../../img/more.png";
 import { useNavigate } from "react-router-dom";
-//import {useDispatch} from "react-redux";
-import { useUserOrders } from "../../store/viewmodel";
+import { useUserOrders } from "../../store/hooks/useUserOrders";
 
 function UserOrders() {
   const router = useNavigate();

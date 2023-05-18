@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Menu from "../comp/menu";
 import Tabl from "../comp/tabl";
 import "../../css/fon.css";
 import Title from "../comp/title";
 import Button from "../comp/button";
 import Error from "../comp/error";
-import del from "../../img/delete.png";
-//import {useSelector} from "react-redux";
-import { useUserBasket } from "../../store/viewmodel";
+import { useUserBasket } from "../../store/hooks/useUserBasket";
 
 function UserBasket() {
   const [error, setError] = useState("");
@@ -17,7 +15,7 @@ function UserBasket() {
     setValueInp(valueInp);
   };
 
-  const { prodd, sum, handleAddingOrder, handleDelete } =
+  const { prodd, sum, handleAddingOrder } =
     useUserBasket();
 
   const addOrder = async () => {

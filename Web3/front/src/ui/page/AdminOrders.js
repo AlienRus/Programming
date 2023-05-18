@@ -3,36 +3,19 @@ import Menu from "../comp/menu";
 import Tabl from "../comp/tabl";
 import "../../css/fon.css";
 import Title from "../comp/title";
-import more from "../../img/more.png";
 import Error from "../comp/error";
 import Button from "../comp/button";
-//import {useDispatch} from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useAdminOrders } from "../../store/viewmodel";
-import CustomLink from "../comp/CustomLink";
+import { useAdminOrders } from "../../store/hooks/useAdminOrders";
 
 function AdminOrders() {
   const [error, setError] = useState("");
-
-  const navigate = useNavigate();
 
   const [valueInp, setValueInp] = useState([]);
   const ValueInp = (valueInp) => {
     setValueInp(valueInp);
   };
 
-  const { orders, handleOrderClick, statOrder } = useAdminOrders();
-
-  /* редакс
-    const dispatch = useDispatch();
-
-    const setOrderA = (ord) => {
-        dispatch({type: "setOrderA", payload: ord})
-    }
-
-    const setIdProdA = (id) => {
-        dispatch({type: "setIdProdA", payload: id})
-    }*/
+  const { orders, statOrder } = useAdminOrders();
 
   const statusOrder = () => {
     if (valueInp.length !== 0) {

@@ -5,7 +5,7 @@ import Input from "../comp/input";
 import Button from "../comp/button";
 import Error from "../comp/error";
 import { useNavigate } from "react-router-dom";
-import { useRegistration } from "../../store/viewmodel";
+import { useRegistration } from "../../store/hooks/useRegistration";
 
 function Registration() {
   const [error, setError] = useState("");
