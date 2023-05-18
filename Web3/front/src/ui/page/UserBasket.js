@@ -6,6 +6,7 @@ import Title from "../comp/title";
 import Button from "../comp/button";
 import Error from "../comp/error";
 import { useUserBasket } from "../../store/hooks/useUserBasket";
+import del from "../../img/delete.png";
 
 function UserBasket() {
   const [error, setError] = useState("");
@@ -15,7 +16,7 @@ function UserBasket() {
     setValueInp(valueInp);
   };
 
-  const { prodd, sum, handleAddingOrder } =
+  const { prodd, sum, handleAddingOrder, handleDeleteClick } =
     useUserBasket();
 
   const addOrder = async () => {
@@ -32,7 +33,7 @@ function UserBasket() {
     }
   };
 
- 
+
   return (
     <>
       <Title title="Корзина"></Title>
@@ -45,7 +46,25 @@ function UserBasket() {
           { id: 4, name: "Кол-во" },
           { id: 5, name: "" },
         ]}
-        items={prodd}
+        items={prodd.map((product, index) => ({
+          ...product,
+          item: product.item.map((item) =>
+            item.name === "PLACEHOLDER" ? {
+              name: (
+                <a
+                  onClick={(event) => {
+                    handleDeleteClick(index);
+                    event.stopPropagation();
+                  }}
+                >
+                  <img src={del} alt="Delete"></img>
+                </a>
+              )
+            } : (
+              item
+            )
+          ),
+        }))}
         onChange={ValueInp}
       ></Tabl>
       <div style={{ display: "flex", flexDirection: "column" }}>

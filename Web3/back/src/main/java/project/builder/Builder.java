@@ -11,8 +11,8 @@ import project.model.interfaces.in.IUserSender;
 import project.model.interfaces.out.IRepositoryOrder;
 import project.model.interfaces.out.IRepositoryProduct;
 import project.model.interfaces.out.IRepositoryUser;
-import project.model.interfaces.out.ISenderProduct;
-import project.model.interfaces.out.ISenderUser;
+import project.model.interfaces.out.ISenderProductWs;
+import project.model.interfaces.out.ISenderUserWS;
 
 public class Builder {
     @Inject @Default
@@ -52,7 +52,7 @@ public class Builder {
     }
 
     @Inject @Default
-    public ISenderProduct sender;
+    public ISenderProductWs sender;
 
     @Inject @Default
     public IProductSender productSender;
@@ -67,7 +67,7 @@ public class Builder {
     public IUserSender userSender;
 
     @Inject @Default
-    public ISenderUser senderUser;
+    public ISenderUserWS senderUser;
 
     @Produces @Build
     public IUserSender builUserSender(){

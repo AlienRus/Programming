@@ -1,11 +1,11 @@
 package project.model;
 
 import project.model.interfaces.in.IProductSender;
-import project.model.interfaces.out.ISenderProduct;
+import project.model.interfaces.out.ISenderProductWs;
 
 public class ProductSender implements IProductSender {
 
-    private ISenderProduct sender;
+    private ISenderProductWs sender;
 
     @Override
     public void sendAll() {
@@ -13,7 +13,7 @@ public class ProductSender implements IProductSender {
     }
 
     @Override
-    public void setSender(ISenderProduct sender) {
+    public void setSender(ISenderProductWs sender) {
         this.sender = sender;
     }
     

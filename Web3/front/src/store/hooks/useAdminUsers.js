@@ -24,29 +24,22 @@ export function useAdminUsers() {
                     { name: res[i].id },
                     { name: res[i].login },
                     { name: res[i].role },
-                    {
-                        name: (
-                            <a
-                                onClick={(event) => {
-                                    setUsers((prevState) => {
-                                        DeleteUser([{ id: users[i].id }]);
-                                        return prevState.filter(
-                                            (index) => index.id !== users[i].id
-                                        );
-                                    });
-                                    event.stopPropagation();
-                                }}
-                            >
-                                <img src={del}></img>
-                            </a>
-                        ),
-                    },
+                    { name: "PLACEHOLDER" }
                 ],
             });
         }
         setUsers(users);
         WSocket(listUsers, "/asyncUsers");
     };
+
+    const handleDeleteClick = (i) => {
+        setUsers((prevState) => {
+            DeleteUser([{ id: users[i].id }]);
+            return prevState.filter(
+                (index) => index.id !== users[i].id
+            );
+        });
+    }
 
     const statusUser = async (valueInp) => {
         for (let i = 0; i < valueInp.length; i++) {
@@ -55,13 +48,6 @@ export function useAdminUsers() {
             await StatusUser(user.get());
             await listUsers();
         }
-    };
-
-    const handleUserClick = async (user) => {
-        setUsers((prevState) => {
-            DeleteUser([{ id: user.id }]);
-            return prevState.filter((index) => index.id !== user.id);
-        });
     };
 
     useEffect(() => {
@@ -75,6 +61,6 @@ export function useAdminUsers() {
         users,
         listUsers,
         statusUser,
-        handleUserClick,
+        handleDeleteClick
     };
 }

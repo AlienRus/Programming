@@ -6,6 +6,8 @@ import Title from "../comp/title";
 import Error from "../comp/error";
 import Button from "../comp/button";
 import { useAdminOrders } from "../../store/hooks/useAdminOrders";
+import { useNavigate } from "react-router-dom";
+import more from "../../img/more.png"
 
 function AdminOrders() {
   const [error, setError] = useState("");
@@ -15,7 +17,9 @@ function AdminOrders() {
     setValueInp(valueInp);
   };
 
-  const { orders, statOrder } = useAdminOrders();
+  const navigate = useNavigate();
+
+  const { orders, statOrder, handleInfoClick } = useAdminOrders();
 
   const statusOrder = () => {
     if (valueInp.length !== 0) {
@@ -38,7 +42,24 @@ function AdminOrders() {
           { id: 5, name: "Статус" },
           { id: 6, name: "" },
         ]}
-        items={orders}
+        items={orders.map((order, index) => ({
+          ...order,
+          item: order.item.map((item) =>
+            item.name === "PLACEHOLDER" ? { name: (
+              <a
+                onClick={(event) => {
+                  navigate("/AdminOrdersInfo");
+                  handleInfoClick(index);
+                  event.stopPropagation();
+                }}
+              >
+                <img src={more} alt="more"></img>
+              </a>
+            )} : (
+              item
+            )
+          ),
+        }))}
         onChange={ValueInp}
       ></Tabl>
       <div style={{ display: "flex", flexDirection: "column" }}>

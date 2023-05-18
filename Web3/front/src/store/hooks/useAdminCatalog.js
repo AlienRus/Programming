@@ -46,7 +46,6 @@ export function useAdminCatalog() {
 
     return {
         products,
-        listProducts,
         handleProductsDelete,
     };
 }

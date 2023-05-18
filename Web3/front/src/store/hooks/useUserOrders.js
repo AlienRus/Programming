@@ -40,7 +40,7 @@ export function useUserOrders() {
                     { name: res[i].totalPrice },
                     { name: res[i].createdAt.substring(0, 10) },
                     { name: res[i].status },
-                    res[i].id, // Save the ID separately for later use
+                    res[i].id, 
                 ],
             });
         }

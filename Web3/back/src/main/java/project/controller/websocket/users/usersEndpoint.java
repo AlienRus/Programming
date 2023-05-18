@@ -6,10 +6,10 @@ import jakarta.websocket.OnMessage;
 import jakarta.websocket.OnOpen;
 import jakarta.websocket.Session;
 import jakarta.websocket.server.ServerEndpoint;
-import project.model.interfaces.out.ISenderUser;
+import project.model.interfaces.out.ISenderUserWS;
 
 @ServerEndpoint("/asyncUsers")
-public class usersEndpoint implements ISenderUser {
+public class usersEndpoint implements ISenderUserWS {
 
     private final static ConcurrentLinkedQueue<Session> queue = new ConcurrentLinkedQueue<>();
 

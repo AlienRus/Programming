@@ -21,17 +21,15 @@ function Registration() {
   const [valuePasR, setValuePasR] = useState("");
   const handlerPassR = (e) => setValuePasR(e.target.value);
 
-  const { userAlreadyExists, reg } = useRegistration();
+  const { reg } = useRegistration();
 
-  const Reg_ = () => {
+  const Reg_ = async () => {
     if (valueInp !== "" && valuePas !== "" && valuePasR !== "") {
       if (valuePas === valuePasR) {
-        reg(valueInp, valuePas);
+        let userAlreadyExists = await reg(valueInp, valuePas);
         if (userAlreadyExists) {
           setError("Пользователь уже существует");
-        } else {
-          navigate("/psi");
-        }
+        } 
       } else {
         setError("Пароли не совпадают");
       }

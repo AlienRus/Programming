@@ -5,7 +5,7 @@ import { Reg } from "../../trans/req/reqF";
 
 // Registration 
 export function useRegistration() {
-    const [userAlreadyExists, setUserAlreadyExists] = useState();
+    
     const reg = async (valueInp, valuePas) => {
         const userV = {
             login: valueInp,
@@ -15,11 +15,10 @@ export function useRegistration() {
         const user = new User();
         user.set(userV);
         const data = await Reg(user.get());
-        setUserAlreadyExists(data.status !== 200);
+        return data.status !== 200;
     };
 
     return {
-        userAlreadyExists,
         reg,
     };
 }

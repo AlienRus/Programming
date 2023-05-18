@@ -5,6 +5,8 @@ import "../../css/fon.css";
 import Title from "../comp/title";
 import Button from "../comp/button";
 import Error from "../comp/error";
+import del from "../../img/delete.png"
+
 
 import { useAdminUsers } from "../../store/hooks/useAdminUsers";
 
@@ -16,7 +18,7 @@ function AdminUsers() {
     setValueInp(valueInp);
   };
 
-  const { users, statusUser } = useAdminUsers();
+  const { users, statusUser, handleDeleteClick } = useAdminUsers();
 
   const statUser = () => {
     if (valueInp.length !== 0) {
@@ -25,6 +27,7 @@ function AdminUsers() {
       setError("Выберете пользователя");
     }
   };
+
 
   return (
     <>
@@ -38,7 +41,23 @@ function AdminUsers() {
           { id: 4, name: "Роль" },
           { id: 5, name: "" },
         ]}
-        items={users}
+        items={users.map((user, index) => ({
+          ...user,
+          item: user.item.map((item) =>
+            item.name === "PLACEHOLDER" ? { name: (
+              <a
+                onClick={(event) => {
+                  handleDeleteClick(index);
+                  event.stopPropagation();
+                }}
+              >
+                <img src={del} alt="Delete"></img>
+              </a>
+            ) } : (
+              item
+            )
+          ),
+        }))}
         onChange={ValueInp}
       ></Tabl>
       <div style={{ display: "flex", flexDirection: "column" }}>

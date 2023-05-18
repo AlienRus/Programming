@@ -1,5 +1,5 @@
 package project.model.interfaces.out;
 
-public interface ISenderProduct {
+public interface ISenderProductWs {
     void sendAll();
 }

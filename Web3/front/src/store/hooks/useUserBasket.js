@@ -3,9 +3,6 @@ import { Order } from "../../trans/order";
 import { useListenerProd } from "../store";
 import { AddOrder } from "../../trans/req/reqF";
 
-import React from "react";
-import del from "../../img/delete.png";
-
 // UserBasket 
 export function useUserBasket() {
     const Prod = useListenerProd();
@@ -59,25 +56,7 @@ export function useUserBasket() {
                         { name: prodd[i].item[2].name },
                         { name: prodd[i].item[3].name },
                         { name: prodd[i].item[4].name },
-                        {
-                            name: (
-                                <a
-                                    onClick={(event) => {
-                                        setProdd((prevState) => {
-                                            calcSum(
-                                                prevState.filter((index) => index.id !== prodd[i].id)
-                                            );
-                                            return prevState.filter(
-                                                (index) => index.id !== prodd[i].id
-                                            );
-                                        });
-                                        event.stopPropagation();
-                                    }}
-                                >
-                                    <img src={del}></img>
-                                </a>
-                            ),
-                        },
+                        { name: "PLACEHOLDER" },
                     ],
                 });
             }
@@ -86,10 +65,14 @@ export function useUserBasket() {
         calcSum(products);
     };
 
-    const handleDelete = (product) => {
+    const handleDeleteClick = (i) => {
         setProdd((prevState) => {
-            calcSum(prevState.filter((index) => index.id !== product.id));
-            return prevState.filter((index) => index.id !== product.id);
+            calcSum(
+                prevState.filter((index) => index.id !== prodd[i].id)
+            );
+            return prevState.filter(
+                (index) => index.id !== prodd[i].id
+            );
         });
     };
 
@@ -102,9 +85,7 @@ export function useUserBasket() {
     return {
         prodd,
         sum,
-        calcSum,
         handleAddingOrder,
-        listProducts,
-        handleDelete,
+        handleDeleteClick,
     };
 }

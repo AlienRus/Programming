@@ -3,10 +3,6 @@ import { useDispatcher } from "../store";
 import { Orders, StatusOrder } from "../../trans/req/reqF";
 import { Order } from "../../trans/order";
 
-import React from "react";
-import more from "../../img/more.png";
-import { useNavigate } from "react-router-dom";
-
 // AdminOrders 
 export function useAdminOrders() {
     const [orders, setOrders] = useState([]);
@@ -23,7 +19,6 @@ export function useAdminOrders() {
           }
         }*/
 
-    const router = useNavigate();
 
     const listOrders = async () => {
         let data = await Orders();
@@ -41,45 +36,16 @@ export function useAdminOrders() {
                     { name: res[i].totalPrice },
                     { name: res[i].createdAt.substring(0, 10) },
                     { name: res[i].status },
-                    {
-                        name: (
-                            <a
-                                onClick={(event) => {
-                                    router("/AdminOrdersInfo");
-                                    const orderA = { prod: orders[i].products };
-                                    setIdProdA(orders[i].id);
-                                    let t = 0;
-                                    let products = [];
-                                    for (let j = 0; j < orderA.prod.length; j++) {
-                                        t = t + 1;
-                                        products.push({
-                                            id: orderA.prod[j].id,
-                                            item: [
-                                                { name: t },
-                                                { name: orderA.prod[j].name },
-                                                { name: orderA.prod[j].type },
-                                                { name: orderA.prod[j].price },
-                                                { name: orderA.prod[j].quantity },
-                                            ],
-                                        });
-                                    }
-                                    setOrderA(products);
-                                    event.stopPropagation();
-                                }}
-                            >
-                                <img src={more}></img>
-                            </a>
-                        ),
-                    },
+                    { name: "PLACEHOLDER" }
                 ],
             });
         }
         setOrders(orders);
     };
 
-    const handleOrderClick = (order) => {
-        const orderA = { prod: order.products };
-        setIdProdA(order.id);
+    const handleInfoClick = (i) => {
+        const orderA = { prod: orders[i].products };
+        setIdProdA(orders[i].id);
         let t = 0;
         let products = [];
         for (let j = 0; j < orderA.prod.length; j++) {
@@ -96,7 +62,7 @@ export function useAdminOrders() {
             });
         }
         setOrderA(products);
-    };
+    }
 
     const statOrder = async (valueInp) => {
         for (let i = 0; i < valueInp.length; i++) {
@@ -117,7 +83,7 @@ export function useAdminOrders() {
     return {
         orders,
         listOrders,
-        handleOrderClick,
         statOrder,
+        handleInfoClick,
     };
 }

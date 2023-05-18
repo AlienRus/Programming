@@ -1,11 +1,11 @@
 package project.model;
 
 import project.model.interfaces.in.IUserSender;
-import project.model.interfaces.out.ISenderUser;
+import project.model.interfaces.out.ISenderUserWS;
 
 public class UserSender implements IUserSender {
 
-    private ISenderUser sender;
+    private ISenderUserWS sender;
 
     @Override
     public void sendAll() {
@@ -13,7 +13,7 @@ public class UserSender implements IUserSender {
     }
 
     @Override
-    public void setSender(ISenderUser sender) {
+    public void setSender(ISenderUserWS sender) {
         this.sender = sender;
     }
     
